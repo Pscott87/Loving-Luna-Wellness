@@ -1,13 +1,18 @@
 /* Loving Luna Wellness – Shared Styles (styles.css)
-   Palette: lavender #C9A9F5, sage #9BB89E, soft background #F7F5FB
-   Calm, moon-inspired, mobile-friendly with gentle animations.
+   Palette:
+     lavender      #C9A9F5 (soft purple)
+     deep lavender #7B5F9C
+     sage          #B6CDAC
+     moon grey     #E4E7F2
 */
 
 :root {
   --lavender: #c9a9f5;
-  --sage: #9bb89e;
-  --ink: #2c2a3b;
-  --bg-soft: #f7f5fb;
+  --lavender-deep: #7b5f9c;
+  --sage: #b6cdac;
+  --moon-grey: #e4e7f2;
+  --ink: #3a3449;
+  --bg-soft: #f8f7fb;
   --card-bg: #ffffff;
   --shadow-soft: 0 14px 30px rgba(0, 0, 0, 0.08);
 }
@@ -18,11 +23,12 @@
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   color: var(--ink);
   background:
     radial-gradient(circle at top left, rgba(201, 169, 245, 0.3), transparent 55%),
-    radial-gradient(circle at bottom right, rgba(155, 184, 158, 0.25), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(182, 205, 172, 0.25), transparent 55%),
     var(--bg-soft);
   min-height: 100vh;
 }
@@ -32,8 +38,10 @@ a {
 }
 
 a:hover {
-  color: var(--lavender);
+  color: var(--lavender-deep);
 }
+
+/* Header / nav */
 
 header {
   position: sticky;
@@ -43,7 +51,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0.8rem 1.5rem;
-  background: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
 }
@@ -71,10 +79,12 @@ nav a {
 }
 
 nav a:hover {
-  background: rgba(201, 169, 245, 0.14);
+  background: rgba(201, 169, 245, 0.16);
   color: var(--ink);
   transform: translateY(-1px);
 }
+
+/* Hero */
 
 .hero {
   padding: 5rem 1.5rem 4rem;
@@ -86,21 +96,32 @@ nav a:hover {
 .hero::before {
   content: "";
   position: absolute;
-  right: 12%;
-  top: 20%;
-  width: 190px;
-  height: 190px;
+  right: 10%;
+  top: 15%;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 20%, #fff, var(--lavender));
-  opacity: 0.18;
-  filter: blur(1px);
+  background: radial-gradient(circle at 30% 20%, #ffffff, var(--moon-grey));
+  opacity: 0.35;
+  filter: blur(2px);
   animation: floatMoon 16s ease-in-out infinite;
 }
 
+.hero-logo {
+  width: 220px;
+  max-width: 60vw;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 10px 20px rgba(123, 95, 156, 0.22));
+}
+
 .hero h1 {
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-size: clamp(2.1rem, 5vw, 3rem);
   margin-bottom: 0.6rem;
   color: var(--ink);
+  position: relative;
+  z-index: 1;
 }
 
 .hero p {
@@ -108,7 +129,53 @@ nav a:hover {
   margin: 0 auto;
   color: #5e597a;
   line-height: 1.6;
+  position: relative;
+  z-index: 1;
 }
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.6rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease, color 0.15s ease;
+}
+
+.hero-button.primary {
+  background: linear-gradient(135deg, var(--lavender), var(--sage));
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.hero-button.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
+}
+
+.hero-button.ghost {
+  background: transparent;
+  border-color: rgba(201, 169, 245, 0.6);
+  color: var(--lavender-deep);
+}
+
+.hero-button.ghost:hover {
+  background: rgba(201, 169, 245, 0.08);
+}
+
+/* Sections */
 
 .section {
   padding: 3.5rem 1.5rem;
@@ -128,15 +195,17 @@ nav a:hover {
   color: #545066;
 }
 
+/* Cards: services, testimonials, FAQ */
+
 .service-card,
 .testimonial-card,
 .faq-item {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.96);
   border-radius: 16px;
   padding: 1.5rem 1.4rem;
   margin-bottom: 1.3rem;
   box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(201, 169, 245, 0.14);
+  border: 1px solid rgba(201, 169, 245, 0.2);
   animation: fadeInUp 0.5s ease both;
 }
 
@@ -164,6 +233,8 @@ nav a:hover {
   margin: 0;
 }
 
+/* Contact layout */
+
 .contact-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
@@ -172,11 +243,11 @@ nav a:hover {
 }
 
 .contact-form {
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.98);
   border-radius: 18px;
   padding: 1.6rem 1.5rem;
   box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(155, 184, 158, 0.2);
+  border: 1px solid rgba(182, 205, 172, 0.6);
 }
 
 .contact-form label {
@@ -193,7 +264,7 @@ nav a:hover {
   border-radius: 10px;
   border: 1px solid rgba(132, 129, 158, 0.5);
   font: inherit;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .contact-form input:focus,
@@ -241,6 +312,8 @@ nav a:hover {
   overflow-x: auto;
 }
 
+/* Footer */
+
 footer {
   text-align: center;
   padding: 2rem 1.5rem;
@@ -251,7 +324,8 @@ footer {
 /* Animations */
 
 @keyframes floatMoon {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) translateX(0px);
   }
   50% {
