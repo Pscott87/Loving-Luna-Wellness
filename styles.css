@@ -518,3 +518,48 @@ footer {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+/* Three-column session lengths layout */
+
+.session-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin: 1.2rem 0;
+}
+
+.session-box {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
+  padding: 1rem 1rem 1.2rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(201, 169, 245, 0.28);
+  text-align: left;
+}
+
+.session-box h5 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--lavender-deep);
+}
+
+.session-box p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #5b566e;
+  line-height: 1.5;
+}
+
+.session-ideal {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #59556f;
+  line-height: 1.5;
+}
+
+/* Mobile-friendly columns */
+@media (max-width: 768px) {
+  .session-columns {
+    grid-template-columns: 1fr;
+  }
+}
